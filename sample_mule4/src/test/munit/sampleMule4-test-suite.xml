@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:apikit-soap="http://www.mulesoft.org/schema/mule/apikit-soap" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+http://www.mulesoft.org/schema/mule/apikit-soap http://www.mulesoft.org/schema/mule/apikit-soap/current/mule-apikit-soap.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<munit:config name="sampleMule4-test-suite.xml" />
+	<apikit-soap:config name="APIKit_for_SOAP_Configuration" doc:name="APIKit for SOAP Configuration" doc:id="723b9a7c-0459-476a-b922-b3ca51b70f70" />
+	<munit:test name="sampleMule4-test-suite-sampleMule4FlowTest" description="Test" doc:id="7fe44b35-de64-486f-a13a-9efbdc467e27" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to sampleMule4Flow" doc:id="806d1d33-0913-4adf-9f34-23c138409556" name="sampleMule4Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="18784fe2-b545-498c-b0b6-11bade4272d1" expression="#[payload]" is="#[MunitTools::equalTo('Sample Mule4 project')]" message="payload didn't match"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
