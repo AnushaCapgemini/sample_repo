@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="mule4-munit-test-suite.xml" />
+	<munit:test name="mule4-munit-test-suite-mule4-munitFlowTest" description="Test" doc:id="271bf7bc-331d-4bde-8373-4818366051ff" >
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mule4-munitFlow" doc:id="f1a2db8e-20f4-4d40-8219-f5d48571dc1a" name="mule4-munitFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="be2f18bc-669b-408f-8faf-3ba2080fe602" expression="#[payload]" is="#[MunitTools::equalTo('Sample Mule4 project')]" message="payload didn't match"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

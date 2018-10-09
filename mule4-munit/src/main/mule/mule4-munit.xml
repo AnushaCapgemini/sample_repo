@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2dd51c1b-1004-4c88-9291-3b88391f5870" >
+		<http:listener-connection host="localhost" port="8083" />
+	</http:listener-config>
+	<flow name="mule4-munitFlow" doc:id="756f5c96-2359-4584-82fc-fbbb7d6d9b82" >
+		<http:listener doc:name="Listener" doc:id="94ee6d95-98d4-4872-b54a-3d9849b998e4" config-ref="HTTP_Listener_config" path="/munit">
+			<ee:repeatable-file-store-stream />
+		</http:listener>
+		<set-payload value='#["Sample Mule4 project"]' doc:name="Set Payload" doc:id="8b400fa5-07fc-49fa-9966-843e4896f2d1" />
+		<logger level="INFO" doc:name="Logger" doc:id="74b9688c-e66b-44cf-b7ca-41553088ed65" message="Hello!! #[payload]"/>
+	</flow>
+</mule>
